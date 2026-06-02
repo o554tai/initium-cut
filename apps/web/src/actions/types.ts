@@ -42,3 +42,13 @@ export type TActionHandlerOptions =
 	| MutableRefObject<boolean>
 	| boolean
 	| undefined;
+
+const ACTIONS_WITH_REQUIRED_ARGS: Set<string> = new Set([
+ "remove-media-asset",
+ "remove-media-assets",
+]);
+
+export function isActionWithOptionalArgs(value: string): value is TActionWithOptionalArgs {
+ const allActions = Object.keys(ACTIONS) as string[];
+ return allActions.includes(value) && !ACTIONS_WITH_REQUIRED_ARGS.has(value);
+}
