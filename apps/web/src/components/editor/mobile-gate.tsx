@@ -60,8 +60,8 @@ export function MobileGate({ children }: MobileGateProps) {
 				<div className="flex items-center gap-3">
 					<Button onClick={handleContinue}>Take a look anyway</Button>
 					<Button variant="ghost" asChild>
-						<Link href="/roadmap" className="flex items-center gap-1">
-							Roadmap
+						<Link href="/projects" className="flex items-center gap-1">
+							Projects
 							<HugeiconsIcon icon={ArrowRight01Icon} size={14} />
 						</Link>
 					</Button>
