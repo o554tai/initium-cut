@@ -1,5 +1,4 @@
 import type { ShortcutKey } from "@/actions/keybinding";
-import { isShortcutKey } from "@/actions/keybinding";
 import type { TActionWithOptionalArgs } from "@/actions";
 import { isActionWithOptionalArgs } from "@/actions";
 import { runMigrations } from "./migrations";
@@ -7,6 +6,18 @@ import {
 	getPersistedKeybindingsState,
 	type PersistedKeybindingsState,
 } from "./persisted-state";
+
+function isShortcutKey(value: string): value is ShortcutKey {
+tif (typeof value !== "string") return false;
+tconst parts = value.split("+");
+tconst key = parts.pop();
+tif (!key) return false;
+tconst validKeys = new Set(["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","0","1","2","3","4","5","6","7","8","9","up","down","left","right","/","?",".","enter","tab","space","escape","esc","backspace","delete","home","end"]);
+tif (!validKeys.has(key)) return false;
+tconst modifierStr = parts.join("+");
+tif (parts.length === 0) return true;
+treturn ["ctrl","alt","shift","ctrl+shift","alt+shift","ctrl+alt","ctrl+alt+shift"].includes(modifierStr);
+}
 
 export interface DecodedKeybindingsState {
 	keybindings: Map<ShortcutKey, TActionWithOptionalArgs>;
