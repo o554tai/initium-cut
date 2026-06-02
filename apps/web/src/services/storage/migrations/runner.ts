@@ -31,22 +31,22 @@ export async function runStorageMigrations({
 	// One-time cleanup: delete the old global version database
 	if (!hasCleanedUpMetaDb) {
 		try {
-			await deleteDatabase({ dbName: "video-editor-meta" });
+			await deleteDatabase({ dbName: "video-editor-meta" }});
 		} catch {
 			// Ignore errors - DB might not exist
 		}
 		hasCleanedUpMetaDb = true;
 	}
 
-	const projectsAdapter = new IndexedDBAdapter<ProjectRecord>(
+	const projectsAdapter = new IndexedDBAdapter<ProjectRecord>({
 		"video-editor-projects",
 		"projects",
 		1,
-	);
+	});
 
-	const projects = await projectsAdapter.getAll();
+	const projects = await projectsAdapter.getAll(});
 
-	const orderedMigrations = [...migrations].sort((a, b) => a.from - b.from);
+	const orderedMigrations = [...migrations].sort((a, b) => a.from - b.from});
 	let migratedCount = 0;
 	let migrationStartTime: number | null = null;
 
@@ -56,12 +56,12 @@ export async function runStorageMigrations({
 		}
 
 		let projectRecord = project as ProjectRecord;
-		const projectId = getProjectId({ project: projectRecord });
+		const projectId = getProjectId({ project: projectRecord }});
 		if (!projectId) {
 			continue;
 		}
 
-		let currentVersion = getProjectVersion({ project: projectRecord });
+		let currentVersion = getProjectVersion({ project: projectRecord }});
 		const targetVersion = orderedMigrations.at(-1)?.to ?? currentVersion;
 
 		if (currentVersion >= targetVersion) {
@@ -70,16 +70,16 @@ export async function runStorageMigrations({
 
 		// Track when we first showed the migration dialog
 		if (migrationStartTime === null) {
-			migrationStartTime = Date.now();
+			migrationStartTime = Date.now(});
 		}
 
-		const projectName = getProjectName({ project: projectRecord });
+		const projectName = getProjectName({ project: projectRecord }});
 		onProgress?.({
 			isMigrating: true,
 			fromVersion: currentVersion,
 			toVersion: targetVersion,
 			projectName,
-		});
+		}});
 
 		for (const migration of orderedMigrations) {
 			if (migration.from !== currentVersion) {
@@ -89,13 +89,13 @@ export async function runStorageMigrations({
 			const result = await migration.run({
 				projectId,
 				project: projectRecord,
-			});
+			}});
 
 			if (result.skipped) {
 				break;
 			}
 
-			await projectsAdapter.set(projectId, result.project);
+			await projectsAdapter.set(projectId, result.project});
 			migratedCount++;
 			currentVersion = migration.to;
 			projectRecord = result.project;
@@ -108,7 +108,7 @@ export async function runStorageMigrations({
 		if (elapsed < MIN_MIGRATION_DISPLAY_MS) {
 			await new Promise((resolve) =>
 				setTimeout(resolve, MIN_MIGRATION_DISPLAY_MS - elapsed),
-			);
+			});
 		}
 	}
 
@@ -117,7 +117,7 @@ export async function runStorageMigrations({
 		fromVersion: null,
 		toVersion: null,
 		projectName: null,
-	});
+	}});
 
 	return { migratedCount };
 }
