@@ -1,0 +1,24 @@
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -3,7 +3,7 @@
+ import * as nativeFs from "fs";
+ 
+ //#region rolldown:runtime
+-var __require = /* @__PURE__ */ createRequire(import.meta.url);
++var _fdirCreateRequire = typeof createRequire !== "undefined" ? /* @__PURE__ */ createRequire(import.meta.url) : null;
+ 
+ //#endregion
+ //#region src/utils.ts
+@@ -440,8 +440,10 @@
+ let pm = null;
+ /* c8 ignore next 6 */
+ try {
+- __require.resolve("picomatch");
+- pm = __require("picomatch");
++ if (_fdirCreateRequire) {
++  _fdirCreateRequire.resolve("picomatch");
++  pm = _fdirCreateRequire("picomatch");
++ }
+ } catch {}
+ var Builder = class {
+  globCache = {};
