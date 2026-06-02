@@ -28,13 +28,13 @@ export function Onboarding() {
 	const getStepTitle = () => {
 		switch (step) {
 			case 0:
-				return "Welcome to OpenCut Beta! 🎉";
-			case 1:
+				return "Welcome to INITIUM Cut Beta! 🎉";
+				case 1:
 				return "⚠️ This is a super early beta!";
-			case 2:
+				case 2:
 				return "🦋 Have fun testing!";
-			default:
-				return "OpenCut Onboarding";
+				default:
+				return "INITIUM Cut Onboarding";
 		}
 	};
 
@@ -44,8 +44,8 @@ export function Onboarding() {
 				return (
 					<div className="space-y-5">
 						<div className="space-y-3">
-							<Title title="Welcome to OpenCut Beta! 🎉" />
-							<Description description="You're among the first to try OpenCut - the fully open source CapCut alternative." />
+							<Title title="Welcome to INITIUM Cut Beta! 🎉" />
+							<Description description="You're among the first to try INITIUM Cut — a fully open source video editor built for property marketing." />
 						</div>
 						<NextButton onClick={handleNext}>Next</NextButton>
 					</div>
@@ -57,7 +57,7 @@ export function Onboarding() {
 							<Title title={getStepTitle()} />
 							<Description description="There's still a ton of things to do to make this editor amazing." />
 							<Description description="A lot of features are still missing. We're working hard to build them out!" />
-							<Description description="If you're curious, check out our roadmap [here](https://opencut.app/roadmap)" />
+							<Description description="If you're curious, check out our roadmap [here](https://initium.sg/roadmap)" />
 						</div>
 						<NextButton onClick={handleNext}>Next</NextButton>
 					</div>
@@ -68,7 +68,7 @@ export function Onboarding() {
 						<div className="space-y-3">
 							<Title title={getStepTitle()} />
 							<Description
-								description={`Join our [Discord](${SOCIAL_LINKS.discord}), chat with cool people and share feedback to help make OpenCut the best editor ever.`}
+								description={`Join our [Discord](${SOCIAL_LINKS.discord}), chat with the team and share feedback to help make INITIUM Cut the best editor for property videos.`}
 							/>
 						</div>
 						<NextButton onClick={handleClose}>Finish</NextButton>

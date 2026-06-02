@@ -56,33 +56,33 @@ export function Header() {
 						<ContextMenuTrigger asChild>
 							<Link href="/" className="flex items-center gap-3">
 								<Image
-									src={DEFAULT_LOGO_URL}
-									alt="OpenCut Logo"
-									className="invert dark:invert-0"
-									width={32}
-									height={32}
-								/>
-							</Link>
-						</ContextMenuTrigger>
-						<ContextMenuContent>
-							<ContextMenuItem
-								onClick={async () => {
-									const res = await fetch(DEFAULT_LOGO_URL);
-									const svg = await res.text();
-									await navigator.clipboard.writeText(svg);
-								}}
-							>
-								<HugeiconsIcon icon={Copy01Icon} />
-								Copy SVG
-							</ContextMenuItem>
-							<ContextMenuItem
-								onClick={() => {
-									const a = document.createElement("a");
-									a.href = DEFAULT_LOGO_URL;
-									a.download = "opencut-logo.svg";
-									a.click();
-								}}
-							>
+										src={DEFAULT_LOGO_URL}
+										alt="INITIUM Cut Logo"
+										className="invert dark:invert-0"
+										width={32}
+										height={32}
+									/>
+								</Link>
+								</ContextMenuTrigger>
+								<ContextMenuContent>
+								<ContextMenuItem
+									onClick={async () => {
+										const res = await fetch(DEFAULT_LOGO_URL);
+										const svg = await res.text();
+										await navigator.clipboard.writeText(svg);
+									}}
+								>
+									<HugeiconsIcon icon={Copy01Icon} />
+									Copy SVG
+								</ContextMenuItem>
+								<ContextMenuItem
+									onClick={() => {
+										const a = document.createElement("a");
+										a.href = DEFAULT_LOGO_URL;
+										a.download = "initium-cut-logo.svg";
+										a.click();
+									}}
+								>
 								<HugeiconsIcon icon={Download01Icon} />
 								Download SVG
 							</ContextMenuItem>

@@ -1,6 +1,6 @@
 {
-	"name": "OpenCut",
-	"description": "A simple but powerful video editor that gets the job done. In your browser.",
+	"name": "INITIUM Cut",
+	"description": "A simple but powerful video editor for property listings. Trim, caption, export — all in your browser.",
 	"display": "standalone",
 	"start_url": "/",
 	"icons": [
