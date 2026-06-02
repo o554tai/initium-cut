@@ -31,7 +31,7 @@ export async function runStorageMigrations({
 	// One-time cleanup: delete the old global version database
 	if (!hasCleanedUpMetaDb) {
 		try {
-			await deleteDatabase({ dbName: "video-editor-meta" }});
+			await deleteDatabase({ dbName: "video-editor-meta" });
 		} catch {
 			// Ignore errors - DB might not exist
 		}
@@ -39,14 +39,14 @@ export async function runStorageMigrations({
 	}
 
 	const projectsAdapter = new IndexedDBAdapter<ProjectRecord>({
-		"video-editor-projects",
-		"projects",
-		1,
+		dbName: "video-editor-projects",
+		storeName: "projects",
+		version: 1,
 	});
 
-	const projects = await projectsAdapter.getAll(});
+	const projects = await projectsAdapter.getAll();
 
-	const orderedMigrations = [...migrations].sort((a, b) => a.from - b.from});
+	const orderedMigrations = [...migrations].sort((a, b) => a.from - b.from);
 	let migratedCount = 0;
 	let migrationStartTime: number | null = null;
 
