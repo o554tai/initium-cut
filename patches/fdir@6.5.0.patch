@@ -5,7 +5,7 @@
  
  //#region rolldown:runtime
 -var __require = /* @__PURE__ */ createRequire(import.meta.url);
-+var _fdirCreateRequire = typeof createRequire !== "undefined" ? /* @__PURE__ */ createRequire(import.meta.url) : null;
++var fdirReq = typeof createRequire !== "undefined" ? /* @__PURE__ */ createRequire(import.meta.url) : null;
  
  //#endregion
  //#region src/utils.ts
@@ -15,9 +15,9 @@
  try {
 - __require.resolve("picomatch");
 - pm = __require("picomatch");
-+ if (_fdirCreateRequire) {
-+  _fdirCreateRequire.resolve("picomatch");
-+  pm = _fdirCreateRequire("picomatch");
++ if (fdirReq) {
++  fdirReq.resolve("picomatch");
++  pm = fdirReq("picomatch");
 + }
  } catch {}
  var Builder = class {
