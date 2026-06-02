@@ -95,6 +95,6 @@
     "postcss": "^8",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.2.1",
-    "typescript": "^5.8.3",
+    "typescript": "^5.8.3"
   }
 }
